@@ -1,0 +1,139 @@
+/* ===== App shell layout ===== */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 16px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-sm);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-item:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-primary);
+}
+
+.nav-item.active {
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.nav-item i {
+  font-size: 18px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: var(--space-md);
+}
+
+/* Keep the sidebar vertically anchored regardless of dock state */
+.sidebar-footer .theme-toggle {
+  white-space: nowrap;
+}
+
+/* ===== Header ===== */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  height: 56px;
+  padding: 0 var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-spacer {
+  flex: 1;
+}
+
+.menu-btn {
+  padding: 4px;
+}
+
+/* ===== Content area ===== */
+.app-content {
+  flex: 1;
+  padding: var(--space-lg);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Docked (collapsed) sidebar: hide nav labels and brand name.
+   Syncfusion keeps .e-dock permanently and toggles .e-close when the
+   sidebar is collapsed to the dock size, so target the combination. */
+.app-shell .e-sidebar.e-dock.e-close .brand-name,
+.app-shell .e-sidebar.e-dock.e-close .nav-item span,
+.app-shell .e-sidebar.e-dock.e-close .sidebar-footer span {
+  display: none;
+}
+
+.app-shell .e-sidebar.e-dock.e-close .nav-item,
+.app-shell .e-sidebar.e-dock.e-close .sidebar-brand,
+.app-shell .e-sidebar.e-dock.e-close .sidebar-footer .theme-toggle {
+  justify-content: center;
+}
+
+/* Keep the docked sidebar from stealing clicks on collapsed items */
+.app-shell .e-sidebar.e-dock.e-close .sidebar-nav {
+  padding-left: var(--space-xs);
+  padding-right: var(--space-xs);
+}
