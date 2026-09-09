@@ -1,0 +1,6 @@
+@financial_accounting_portfolio_api_service_HostAddress = http://localhost:5167
+
+GET {{financial_accounting_portfolio_api_service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
